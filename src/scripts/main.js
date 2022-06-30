@@ -7,6 +7,8 @@ import {createSoybean} from './seeds/soybean.js'
 import {createCorn} from './seeds/corn.js'
 import {addPlant, usePlants} from './fields.js'
 import {plantSeeds} from './tractor.js'
+import {harvestPlants} from './harvester.js'
+import {catalog} from './catalog.js'
 
 
 //testing if first array from plan.js
@@ -36,13 +38,18 @@ console.log(testSunflowerObject)
 
 
 let fieldOfPlants = plantSeeds(yearlyPlan)
-console.log(fieldOfPlants)
 const fieldInventory = usePlants()
-console.log(fieldInventory)
+console.log(fieldInventory)//array with planted seeds
 
-
+let fieldPlants = harvestPlants(fieldInventory)
+console.log(fieldPlants)//array with harvested food 
 
 
 console.log("Welcome to the main module")
 
+// let livePage = catalog(fieldPlants)
+// console.log(livePage)
 
+// Invoke the component function that renders the HTML list
+const parentHTMLElement = document.querySelector(".container")
+parentHTMLElement.innerHTML = catalog(fieldPlants)
